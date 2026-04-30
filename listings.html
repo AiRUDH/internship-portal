@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listings — MySock</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo">MySock</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="listings.html" class="active">Listings</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="admin.html" class="nav-cta">Admin</a>
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:4rem 2rem;text-align:center;">
+  <span class="section-tag" style="color:#a89fff;">Browse</span>
+  <h1 style="color:#fff;font-size:clamp(2rem,5vw,3rem);font-weight:900;margin:0.5rem 0;">All Listings</h1>
+  <p style="color:rgba(255,255,255,0.6);max-width:480px;margin:0 auto;">Discover curated opportunities updated in real time by our team.</p>
+</div>
+
+<!-- LISTINGS SECTION -->
+<section style="background:var(--bg);">
+  <div class="container">
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="🔍  Search listings..." aria-label="Search listings" />
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="">All Categories</option>
+        <option value="Technology">Technology</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Finance">Finance</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="listings-grid" id="listingsGrid">
+      <div class="loading-spinner"><div class="spinner"></div> Loading listings...</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">MySock</span>
+        <p>A modern platform for discovering curated listings and connecting with opportunities that matter.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="listings.html">Listings</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="admin.html">Admin Panel</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MySock. Built with ❤️ and Firebase.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

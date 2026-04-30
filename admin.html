@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — MySock</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo">MySock</span>
+      <button class="btn-icon" id="sidebarClose" aria-label="Close sidebar" style="color:rgba(255,255,255,0.5);font-size:1.3rem;">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-section="dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </div>
+      <div class="nav-item" data-section="listings">
+        <span class="nav-icon">📋</span> Manage Listings
+      </div>
+      <div class="nav-item" data-section="applications">
+        <span class="nav-icon">📨</span> Applications
+      </div>
+      <div class="nav-item" data-section="users">
+        <span class="nav-icon">👥</span> Users
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="admin-info">
+        <div class="admin-avatar" id="adminAvatar">A</div>
+        <div>
+          <div style="color:#fff;font-size:0.85rem;font-weight:600;">Admin</div>
+          <div class="admin-email" id="adminEmail">Loading...</div>
+        </div>
+      </div>
+      <button class="btn-logout" id="logoutBtn">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <button class="btn-icon" id="sidebarToggle" aria-label="Toggle sidebar" style="font-size:1.3rem;">☰</button>
+        <h1 id="pageTitle">Dashboard</h1>
+      </div>
+      <a href="index.html" style="font-size:0.85rem;color:var(--text-light);">← View Site</a>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- DASHBOARD SECTION -->
+      <div id="section-dashboard" class="admin-section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon purple">📋</div>
+            <div><div class="stat-card-num" id="totalListings">—</div><div class="stat-card-label">Total Listings</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon pink">📨</div>
+            <div><div class="stat-card-num" id="totalApplications">—</div><div class="stat-card-label">Applications</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon green">✅</div>
+            <div><div class="stat-card-num" id="activeListings">—</div><div class="stat-card-label">Active Listings</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon blue">📅</div>
+            <div><div class="stat-card-num" id="todayApps">—</div><div class="stat-card-label">Today's Apps</div></div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2>Recent Applications</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr>
+              </thead>
+              <tbody id="recentAppsTable">
+                <tr><td colspan="4"><div class="loading-spinner"><div class="spinner"></div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- LISTINGS SECTION -->
+      <div id="section-listings" class="admin-section" style="display:none;">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2>All Listings</h2>
+            <button class="btn btn-primary" id="addListingBtn" style="padding:0.5rem 1.25rem;font-size:0.9rem;">+ Add Listing</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Title</th><th>Category</th><th>Description</th><th>Date</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="listingsTable">
+                <tr><td colspan="5"><div class="loading-spinner"><div class="spinner"></div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPLICATIONS SECTION -->
+      <div id="section-applications" class="admin-section" style="display:none;">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2>All Applications</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="applicationsTable">
+                <tr><td colspan="5"><div class="loading-spinner"><div class="spinner"></div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- USERS SECTION -->
+      <div id="section-users" class="admin-section" style="display:none;">
+        <div class="admin-card" style="padding:3rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:1rem;">👥</div>
+          <h2 style="margin-bottom:0.5rem;">User Management</h2>
+          <p style="color:var(--text-light);">User management features coming soon. Currently only admin accounts are supported via Firebase Authentication.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ADD / EDIT LISTING MODAL -->
+<div class="modal-overlay" id="listingModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Add New Listing</h2>
+      <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+    </div>
+    <form id="listingForm" novalidate>
+      <input type="hidden" id="editListingId" />
+      <div class="form-group">
+        <label for="listingTitle">Title *</label>
+        <input type="text" id="listingTitle" placeholder="e.g. Full Stack Developer Role" />
+        <div class="form-error" id="titleError">Title is required.</div>
+      </div>
+      <div class="form-group">
+        <label for="listingCategory">Category *</label>
+        <select id="listingCategory">
+          <option value="">Select a category</option>
+          <option value="Technology">Technology</option>
+          <option value="Design">Design</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Finance">Finance</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="form-error" id="categoryError">Please select a category.</div>
+      </div>
+      <div class="form-group">
+        <label for="listingDescription">Description *</label>
+        <textarea id="listingDescription" placeholder="Describe this listing..."></textarea>
+        <div class="form-error" id="descError">Description is required.</div>
+      </div>
+      <div class="form-group">
+        <label for="listingLink">Link (optional)</label>
+        <input type="url" id="listingLink" placeholder="https://example.com" />
+      </div>
+      <div style="display:flex;gap:1rem;margin-top:0.5rem;">
+        <button type="button" class="btn btn-outline" id="cancelModal" style="flex:1;color:var(--text);border-color:var(--border);justify-content:center;">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveListingBtn" style="flex:1;justify-content:center;">Save Listing</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <h2>Confirm Delete</h2>
+      <button class="modal-close" id="deleteModalClose">✕</button>
+    </div>
+    <p style="color:var(--text-light);margin-bottom:1.5rem;">Are you sure you want to delete this item? This action cannot be undone.</p>
+    <div style="display:flex;gap:1rem;">
+      <button class="btn btn-outline" id="cancelDelete" style="flex:1;color:var(--text);border-color:var(--border);justify-content:center;">Cancel</button>
+      <button class="btn btn-secondary" id="confirmDelete" style="flex:1;justify-content:center;">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

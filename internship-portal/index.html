@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySock Internships — Find Your Next Opportunity</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">MySock Internships</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Listings</a>
+    <a href="apply.html">Apply</a>
+    <a href="login.html" class="nav-btn">Admin</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="hero">
+  <h1>Launch Your Career with<br /><span>MySock Internships</span></h1>
+  <p>Discover curated internship opportunities and apply in minutes.</p>
+  <a href="apply.html" class="btn btn-primary" style="font-size:1rem;padding:0.75rem 2rem;">Apply Now →</a>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="heroCount">—</div>
+      <div class="hero-stat-label">Open Roles</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Free to Apply</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Fast</div>
+      <div class="hero-stat-label">Response Time</div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Open Internships</h2>
+      <p>All positions updated in real time by our team.</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="🔍  Search by title or description..." aria-label="Search internships" />
+    </div>
+    <div class="cards-grid" id="internshipsGrid">
+      <div class="loading-spinner"><div class="spinner"></div> Loading internships...</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>MySock</span> — Internship Portal. All rights reserved.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="script.js"></script>
+</body>
+</html>
