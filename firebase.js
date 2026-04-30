@@ -1,11 +1,11 @@
 // Firebase Configuration — MySock Portal
 const firebaseConfig = {
-  apiKey: "AIzaSyCavv6fOrI2g2cZNDMpx3YzB0FeF8D-fYI",
+  apiKey: "AIzaSyAh9o8METVWB67-sHXFFXFwDpFI6O5BEmw",
   authDomain: "mysock-portal.firebaseapp.com",
   projectId: "mysock-portal",
   storageBucket: "mysock-portal.appspot.com",
-  messagingSenderId: "YOUR_REAL_ID",
-  appId: "YOUR_REAL_APP_ID"
+  messagingSenderId: "313284569809",
+  appId: "1:313284569809:web:cd12daf2c89dbc077f33f0"
 };
 
 // Initialize Firebase
